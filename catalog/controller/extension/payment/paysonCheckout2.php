@@ -108,7 +108,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $this->load->language('extension/payment/paysonCheckout2');
 
         $callPaysonApi = $this->getAPIInstanceMultiShop();
-        $paysonMerchant = new PaysonEmbedded\Merchant($this->data['checkout_url'], $this->data['ok_url'], $this->data['ipn_url'], $this->data['terms_url'], null, ('PaysonCheckout2.0_Opencart|' . $this->config->get('paysonCheckout2_modul_version') . '|' . VERSION));
+        $paysonMerchant = new PaysonEmbedded\Merchant($this->data['checkout_url'], $this->data['ok_url'], $this->data['ipn_url'], $this->data['terms_url'], null, ('PaysonCheckout2.0_Opencart2.3|' . $this->config->get('paysonCheckout2_modul_version') . '|' . VERSION));
         
         $paysonMerchant->reference = $this->session->data['order_id'];
         $payData = new PaysonEmbedded\PayData($this->currencypaysonCheckout2());
@@ -435,6 +435,10 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
             if ($orderTotal['code'] == 'shipping') {
                 $orderTotalType = PaysonEmbedded\OrderItemType::SERVICE;
             }
+
+            if($orderTotalAmount < 0) {
+                $orderTotalType = PaysonEmbedded\OrderItemType::DISCOUNT;
+            }  
 
             $payData->AddOrderItem(new PaysonEmbedded\OrderItem(html_entity_decode($orderTotal['title'], ENT_QUOTES, 'UTF-8'), $orderTotalAmount, 1, ($orderTotal['lpa_tax']) / 100, $orderTotal['code'], $orderTotalType));
         }
