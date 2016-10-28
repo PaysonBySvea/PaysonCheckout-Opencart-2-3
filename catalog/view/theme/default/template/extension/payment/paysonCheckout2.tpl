@@ -91,7 +91,7 @@ if (isset($snippet)){
         var customerIsLogged = '<?php echo isset($customerIsLogged)?$customerIsLogged:0; ?>';
 
         if(!customerIsLogged && (country_code !== address.CountryCode.toUpperCase())){
-           document.location='index.php?route=payment/paysonCheckout2/returnFromPayson&address_data='+JSON.stringify(address);
+          // document.location='index.php?route=payment/paysonCheckout2/returnFromPayson&address_data='+JSON.stringify(address);
         }
     });
  
