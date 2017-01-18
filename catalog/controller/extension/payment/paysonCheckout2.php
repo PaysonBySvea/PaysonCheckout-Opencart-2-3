@@ -17,7 +17,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         
         $this->data['error_checkout_id'] = $this->language->get('error_checkout_id');
         $this->data['info_checkout'] = $this->language->get('info_checkout');
-        $data['country_code'] = isset($this->session->data['payment_address']['iso_code_2'])? $this->session->data['payment_address']['iso_code_2'] : NULL;
+        $this->data['country_code'] = isset($this->session->data['payment_address']['iso_code_2'])? $this->session->data['payment_address']['iso_code_2'] : NULL;
         $this->data['customerIsLogged'] = $this->customer->isLogged() == 1 ? true : false ;     
         if (isset($this->request->get['snippet'])) {
             $iframeSetup['snippet'] = $this->getSnippetUrl($this->request->get['snippet']);
