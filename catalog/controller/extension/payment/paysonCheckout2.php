@@ -36,10 +36,10 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
 
         if (count($iframeSetup) > 0) {
             $this->load->model('checkout/order');                
-            $this->response->setOutput($this->load->view('extension/payment/paysonCheckout2.tpl', $iframeSetup));
+            $this->response->setOutput($this->load->view('extension/payment/paysonCheckout2', $iframeSetup));
         } else {
             $this->setupPurchaseData();
-            return $this->load->view('extension/payment/paysonCheckout2.tpl', $this->data);
+            return $this->load->view('extension/payment/paysonCheckout2', $this->data);
         }
     }
 
