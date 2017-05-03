@@ -6,7 +6,7 @@ class ModelExtensionPaymentPaysonCheckout2 extends Model {
     private $minimumAmountSEK = 6;
     private $minimumAmountEUR = 0.6;
     private $maxAmountSEK = 40000;
-    private $maxAmountEUR = 4000;
+    private $maxAmountEUR = 3000;
 
 
     public function getMethod($address, $total) {
