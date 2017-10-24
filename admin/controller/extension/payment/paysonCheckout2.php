@@ -271,7 +271,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
             $data['paysonCheckout2_iframe_size_height'] = $this->request->post['paysonCheckout2_iframe_size_height'];
         } else {
             if($this->config->get('paysonCheckout2_iframe_size_height') == Null){
-                $data['paysonCheckout2_iframe_size_height'] = '700';
+                $data['paysonCheckout2_iframe_size_height'] = '900';
             }else{
                 $data['paysonCheckout2_iframe_size_height'] = $this->config->get('paysonCheckout2_iframe_size_height');
             }
