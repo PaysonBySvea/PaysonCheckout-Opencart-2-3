@@ -1,4 +1,4 @@
-Payson-Checkout2-3-Opencart
+Payson-Checkout2-Opencart-2-3
 ========================
 
 Module for OpenCart 2.3.0.2 implementing Payson Checkout 2.0
