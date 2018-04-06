@@ -89,6 +89,10 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['entry_show_receipt_page'] = $this->language->get('entry_show_receipt_page');
         $data['entry_show_receipt_page_yes'] = $this->language->get('entry_show_receipt_page_yes');
         $data['entry_show_receipt_page_no'] = $this->language->get('entry_show_receipt_page_no');
+
+        $data['entry_show_comments'] = $this->language->get('entry_show_comments');
+        $data['entry_show_comments_yes'] = $this->language->get('entry_show_comments_yes');
+        $data['entry_show_comments_no'] = $this->language->get('entry_show_comments_no');
         
         $data['button_save'] = $this->language->get('button_save');
         $data['button_cancel'] = $this->language->get('button_cancel');
@@ -105,7 +109,8 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['help_iframe_size_width'] = $this->language->get('help_iframe_size_width');
         $data['help_iframe_size_height_type'] = $this->language->get('help_iframe_size_height_type');
         $data['help_iframe_size_width_type'] = $this->language->get('help_iframe_size_width_type'); 
-	$data['help_receipt'] = $this->language->get('help_receipt');		
+	    $data['help_receipt'] = $this->language->get('help_receipt');	
+        $data['help_comments'] = $this->language->get('help_receipt');	
         $data['help_totals_to_ignore'] = $this->language->get('help_totals_to_ignore');
         $data['help_method_mode'] = $this->language->get('help_method_mode');
 
@@ -282,10 +287,17 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         } else {
             $data['paysonCheckout2_iframe_size_height_type'] = $this->config->get('paysonCheckout2_iframe_size_height_type');
         }
+
         if (isset($this->request->post['paysonCheckout2_receipt'])) {
             $data['paysonCheckout2_receipt'] = $this->request->post['paysonCheckout2_receipt'];
         } else {
             $data['paysonCheckout2_receipt'] = $this->config->get('paysonCheckout2_receipt');
+        }
+        
+        if (isset($this->request->post['paysonCheckout2_comments'])) {
+            $data['paysonCheckout2_comments'] = $this->request->post['paysonCheckout2_comments'];
+        } else {
+            $data['paysonCheckout2_comments'] = $this->config->get('paysonCheckout2_comments');
         }
         
         if (isset($this->request->post['paysonCheckout2_ignored_order_totals'])) {

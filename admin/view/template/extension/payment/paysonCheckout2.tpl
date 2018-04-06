@@ -241,6 +241,16 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-comments"><span data-toggle="tooltip" title="<?php echo $help_comments; ?>"><?php echo $entry_show_comments; ?></span></label>
+                        <div class="col-sm-10">
+                            <select name="paysonCheckout2_comments" id="input-comments" class="form-control">
+                                <option value="1" <?php echo ($paysonCheckout2_comments == 1 ? 'selected="selected"' : '""') . '>'  . $entry_show_comments_yes?></option>
+                                <option value="0" <?php echo ($paysonCheckout2_comments == 0 ? 'selected="selected"' : '""') . '>' . $entry_show_comments_no?></option>
+                            </select>
+                        </div>
+                    </div>
                     
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-receipt"><span data-toggle="tooltip" title="<?php echo $help_receipt; ?>"><?php echo $entry_show_receipt_page; ?></span></label>
