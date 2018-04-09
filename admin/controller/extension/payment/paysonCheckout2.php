@@ -110,7 +110,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['help_iframe_size_height_type'] = $this->language->get('help_iframe_size_height_type');
         $data['help_iframe_size_width_type'] = $this->language->get('help_iframe_size_width_type'); 
 	    $data['help_receipt'] = $this->language->get('help_receipt');	
-        $data['help_comments'] = $this->language->get('help_receipt');	
+        $data['help_comments'] = $this->language->get('help_comments');	
         $data['help_totals_to_ignore'] = $this->language->get('help_totals_to_ignore');
         $data['help_method_mode'] = $this->language->get('help_method_mode');
 

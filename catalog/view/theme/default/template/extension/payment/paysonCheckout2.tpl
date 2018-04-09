@@ -14,7 +14,17 @@ if (isset($snippet)){
         <?php 
         echo $footer;
     }else{ 
-        if(!$customerIsLogged){
+        if($is_comments)
+        {?>
+            <p><strong> <?php  echo $text_payson_comments; ?></strong></p>
+            <p>
+              <textarea name="payson_comments" id="payson_comments" rows="6" class="form-control"> <?php  echo $payson_comment; ?> </textarea>
+            </p>
+
+        <?php
+        }
+        if(!$customerIsLogged)
+        {
         ?>
             <!-- <div class="well well-sm"> -->
             <div class="alert alert-info"><i class="fa fa-info-circle"></i> <?php echo $info_checkout; ?>
@@ -45,6 +55,21 @@ if (isset($snippet)){
 }
 ?>
 <script type="text/javascript"><!--  
+
+    $("#payson_comments").on('mouseout', function(e) {
+        $.ajax({
+            type: 'get',
+            url: 'index.php?route=extension/payment/paysonCheckout2/paysonComments' + '&payson_comments=' + e.target.value,
+            cache: false,
+            success: function(response) {
+                //Do Something
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                //Do Something to handle error
+            }
+        });
+     });
+     
 
    // QUICH AJAX CHECKOUT OPEN CART FIX -> START
     document.paysonQuickCheckoutTracker = function() {
@@ -84,7 +109,7 @@ if (isset($snippet)){
         //adress.Street
         //alert(address.City);
         
-        console.log(address);
+        //console.log(address);
 
             
         var country_code = '<?php echo isset($country_code)?strtoupper($country_code):0; ?>';
