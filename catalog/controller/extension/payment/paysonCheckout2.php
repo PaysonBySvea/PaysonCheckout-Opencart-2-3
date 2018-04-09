@@ -15,7 +15,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $this->load->language('extension/payment/paysonCheckout2');
         $iframeSetup = array();
         
-        $this->data['text_payson_comment'] = $this->language->get('text_payson_comment'); 
+        $this->data['text_payson_comments'] = $this->language->get('text_payson_comments'); 
         $this->data['error_checkout_id'] = $this->language->get('error_checkout_id');
         $this->data['info_checkout'] = $this->language->get('info_checkout');
         $this->data['country_code'] = isset($this->session->data['payment_address']['iso_code_2'])? $this->session->data['payment_address']['iso_code_2'] : NULL;
