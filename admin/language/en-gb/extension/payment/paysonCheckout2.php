@@ -7,7 +7,7 @@ $_['heading_title'] = 'Payson Checkout 2.0';
 
 // Text
 $_['text_modul_name'] = 'Payson Checkout 2.0';
-$_['text_modul_version'] = '1.0.1.8';
+$_['text_modul_version'] = '1.0.1.9';
 
 $_['text_payment'] = 'Payment';
 $_['text_success'] = 'Success: You have modified Payson Checkout 2.0 module!';
@@ -23,6 +23,10 @@ $_['merchant_id'] = 'Merchant id';
 $_['api_key'] = 'API-key';
 
 $_['secure_word'] = 'Secure word';
+
+$_['tab_api']				         = 'API Details';
+$_['tab_order_status']				 = 'Order status';
+$_['tab_checkout_scheme']			 = 'Checkout scheme';
 
 $_['entry_total'] = 'Total';
 $_['entry_order_status'] = 'Order Status';
@@ -56,11 +60,11 @@ $_['text_iframe_size_height_percent'] = '%';
 $_['text_iframe_size_height_px'] = 'px';
 $_['entry_order_item_details_to_ignore'] = 'Order Item Details to ignore by Payson Checkout 2.0';
 $_['entry_show_receipt_page'] = 'Show Receipt Page';
-$_['entry_show_receipt_page_yes'] = 'Yes';
-$_['entry_show_receipt_page_no'] = 'No';
+$_['entry_show_receipt_page_yes'] = 'yes';
+$_['entry_show_receipt_page_no'] = 'no';
 $_['entry_show_comments'] = 'Comments about the order';
-$_['entry_show_comments_yes'] = 'Yes';
-$_['entry_show_comments_no'] = 'No';
+$_['entry_show_comments_yes'] = 'yes';
+$_['entry_show_comments_no'] = 'no';
 // Error
 $_['error_permission'] = 'Warning: You do not have permission to modify payment Payson module!';
 $_['error_merchant_id'] = 'Agent ID Required!';

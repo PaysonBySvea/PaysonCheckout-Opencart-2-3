@@ -7,7 +7,7 @@ $_['paysonCheckout2_example'] = 'Example Extra Text';
 $_['heading_title'] = 'Payson Checkout 2.0';
 // Text
 $_['text_modul_name'] = 'Payson Checkout 2.0';
-$_['text_modul_version'] = '1.0.1.8';
+$_['text_modul_version'] = '1.0.1.9';
 $_['text_payment'] = 'Payment';
 $_['text_success'] = 'Success: Du har &auml;ndrat Payson Checkout 2.0 modulen!';
 $_['text_paysonCheckout2'] = '<a onclick="window.open(\'https://www.payson.se/tj%C3%A4nster/ta-betalt\');"><img src="view/image/payment/paysonCheckout2.png" alt="payson Checkout 2.0" title="payson Checkout 2.0" /></a>';
@@ -19,9 +19,13 @@ $_['text_method_mode_live'] = 'Produktionsmilj&ouml;';
 $_['text_method_mode_sandbox'] = 'Testmilj&ouml;';
 
 $_['merchant_id'] = 'Merchant id';
-$_['api_key'] = 'API-key';
+$_['api_key'] = 'API-nyckel';
 
 $_['secure_word'] = 'Hemligt ord';
+
+$_['tab_api']				         = 'API Details';
+$_['tab_order_status']				 = 'Order status';
+$_['tab_checkout_scheme']			 = 'Checkout scheme';
 
 $_['entry_total'] = 'Totalt';
 $_['entry_order_status'] = 'Order Status';
@@ -33,8 +37,8 @@ $_['entry_totals_to_ignore'] = 'Ignorerade ordertillägg';
 
 $_['text_request_phone'] = 'Aktivera telefonnummer';
 $_['entry_phone'] = 'Telefonnummer';
-$_['text_phone_yes'] = 'yes';
-$_['text_phone_no'] = 'no';
+$_['text_phone_yes'] = 'ja';
+$_['text_phone_no'] = 'nej';
 $_['entry_verification'] = 'Verification';
 $_['text_verification_none'] = 'None';
 $_['text_verification_bankid'] = 'BankId';
@@ -55,8 +59,8 @@ $_['text_iframe_size_height_percent'] = '%';
 $_['text_iframe_size_height_px'] = 'px';
 $_['entry_order_item_details_to_ignore'] = 'Ignorerade ordertillägg vid Payson';
 $_['entry_show_receipt_page']           = 'Visa Kvittosidan';
-$_['entry_show_receipt_page_yes']           = 'Ja';
-$_['entry_show_receipt_page_no']           = 'Nej';
+$_['entry_show_receipt_page_yes']           = 'ja';
+$_['entry_show_receipt_page_no']           = 'nej';
 
 // Error
 $_['error_permission'] = 'Warning: You do not have permission to modify payment Payson module!';
