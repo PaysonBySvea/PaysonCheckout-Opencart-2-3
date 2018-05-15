@@ -4,7 +4,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     private $testMode;
     public $data = array();
 
-    const MODULE_VERSION = 'paysonEmbedded_1.0.1.8';
+    const MODULE_VERSION = 'paysonEmbedded_1.0.2.0';
 
     function __construct($registry) {
         parent::__construct($registry);
@@ -417,7 +417,13 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         foreach ($orderTotals as $orderTotal) {
             $orderTotalType = PaysonEmbedded\OrderItemType::SERVICE;
 
-            $orderTotalAmountTemp = ($orderTotal['value'])* (1 + ($orderTotal['lpa_tax']) / 100);
+            $orderTotalAmountTemp = 0;
+            if($orderTotal['value'] < 0) {
+              $orderTotalAmountTemp = $orderTotal['value'];  
+            }else{
+                $orderTotalAmountTemp = ($orderTotal['value'])* (1 + ($orderTotal['lpa_tax']) / 100);
+            }
+            
             $orderTotalAmount = $this->currency->format($orderTotalAmountTemp, $order_data['currency_code'], $order_data['currency_value'], false) ;
 			
             if ($orderTotalAmount == null || $orderTotalAmount == 0) {
