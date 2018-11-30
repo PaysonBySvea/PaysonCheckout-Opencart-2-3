@@ -122,7 +122,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $customer = new PaysonEmbedded\Customer(
                 $this->data['sender_first_name'], $this->data['sender_last_name'], $this->data['sender_email'], $this->data['sender_telephone'], '', $this->data['sender_city'], $this->data['sender_countrycode'], $this->data['sender_postcode'], $this->data['sender_address']);
         
-        $checkout = new PaysonEmbedded\Checkout($paysonMerchant, $payData, $gui, $customer);
+        $checkout = new PaysonEmbedded\Checkout($paysonMerchant, $payData, $gui, $customer, $this->session->data['order_id']);
     
         $checkoutTempObj = NULL;
         try {
