@@ -564,7 +564,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
                         currency_code                 = 'currency_code',
                         tracking_id                   = 'tracking_id',
                         type                          = 'type',
-                        shippingAddress_name          = '" . $paymentDetails->customer->firstName . "', 
+                        shippingAddress_name          = '" .  str_replace( array( '\'', '"', ',' , ';', '<', '>', '&' ), ' ', $paymentDetails->customer->firstName)  . "',
                         shippingAddress_lastname      = '" . $paymentDetails->customer->lastName . "', 
                         shippingAddress_street_ddress = '" . $paymentDetails->customer->street . "',
                         shippingAddress_postal_code   = '" . $paymentDetails->customer->postalCode . "',
