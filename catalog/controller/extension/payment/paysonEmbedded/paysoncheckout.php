@@ -19,14 +19,26 @@ namespace PaysonEmbedded {
         /** @var string $id */
         public $id;
         
+        /** @var int $purchaseId */
+        public $purchaseId;
+        
         /** @var string $snippet */
         public $snippet;
+        
+        /** @var string $description */
+        public $description;
+        
+        /** @var string $expirationTime */
+        public $expirationTime;
        
-        public function __construct(Merchant $merchant, PayData $payData,  Gui $gui = null,  Customer $customer = null) {
+        public function __construct(Merchant $merchant, PayData $payData,  Gui $gui = null,  Customer $customer = null, $description = '', $expirationTime = '') {
             $this->merchant = $merchant;
             $this->payData = $payData;
             $this->gui = $gui?:new Gui();
             $this->customer = $customer?:new Customer();
+            $this->purchaseId = null;
+            $this->description = $description;
+            $this->expirationTime = $expirationTime;
         }
         
         public static function create($data) {
@@ -34,17 +46,30 @@ namespace PaysonEmbedded {
             $checkout->status = $data->status;
             $checkout->id = $data->id;
             $checkout->snippet = $data->snippet;
+            if(isset($data->purchaseId)) {
+                $checkout->purchaseId = $data->purchaseId;
+            }
+            
+            if(isset($data->description)) {
+                $checkout->description = $data->description;
+            }
+            
+            if(isset($data->expirationTime)) {
+                $checkout->expirationTime = $data->expirationTime;
+            }
             return $checkout;
         }
       
         public function toArray() {
             return array(
                 'id' => $this->id,
+                'description' => $this->description,
                 'status' => $this->status,
+                'expirationTime' => $this->expirationTime,
                 'merchant' => $this->merchant->toArray(),
                 'order' => $this->payData->toArray(),
                 'gui' => $this->gui->toArray(),
-                'customer' => $this->customer->toArray()
+                'customer' => $this->customer->toArray(),
             );
         }
     }
