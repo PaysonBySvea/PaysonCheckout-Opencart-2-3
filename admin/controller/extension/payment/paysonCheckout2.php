@@ -81,6 +81,10 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['entry_phone'] = $this->language->get('entry_phone');
         $data['text_phone_yes'] = $this->language->get('text_phone_yes');
         $data['text_phone_no'] = $this->language->get('text_phone_no');
+
+        $data['entry_registered_customer'] = $this->language->get('entry_registered_customer');
+        $data['text_registered_customer_yes'] = $this->language->get('text_registered_customer_yes');
+        $data['text_registered_customer_no'] = $this->language->get('text_registered_customer_no');
         
         $data['entry_iframe_size_width'] = $this->language->get('entry_iframe_size_width');
         $data['entry_iframe_size_width_type'] = $this->language->get('entry_iframe_size_width_type');
@@ -110,6 +114,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['help_total'] = $this->language->get('help_total');
         $data['help_verification'] = $this->language->get('help_verification');
         $data['help_request_phone'] = $this->language->get('help_request_phone');
+        $data['help_request_registered_customer'] = $this->language->get('help_request_registered_customer');
         $data['help_color_scheme'] = $this->language->get('help_color_scheme');
         $data['help_iframe_size_height'] = $this->language->get('help_iframe_size_height');
         $data['help_iframe_size_width'] = $this->language->get('help_iframe_size_width');
@@ -258,6 +263,12 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
             $data['paysonCheckout2_request_phone'] = $this->request->post['paysonCheckout2_request_phone'];
         } else {
             $data['paysonCheckout2_request_phone'] = $this->config->get('paysonCheckout2_request_phone');
+        }
+
+        if (isset($this->request->post['paysonCheckout2_request_registered_customer'])) {
+            $data['paysonCheckout2_request_registered_customer'] = $this->request->post['paysonCheckout2_request_registered_customer'];
+        } else {
+            $data['paysonCheckout2_request_registered_customer'] = $this->config->get('paysonCheckout2_request_registered_customer');
         }
         
         if (isset($this->request->post['paysonCheckout2_color_scheme'])) {

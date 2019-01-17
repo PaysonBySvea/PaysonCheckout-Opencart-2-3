@@ -168,6 +168,21 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-registered-customer"><span data-toggle="tooltip" title="<?php echo $help_request_registered_customer; ?>"><?php echo $entry_registered_customer; ?></span></label>
+                                <div class="col-sm-10">
+                                    <select name="paysonCheckout2_request_registered_customer" id="input-registered-customer" class="form-control">
+                                        <?php if ($paysonCheckout2_request_registered_customer) { ?>
+                                        <option value="1"><?php echo $text_registered_customer_yes; ?></option>
+                                        <option value="0" selected="selected"><?php echo $text_registered_customer_no; ?></option>
+                                        <?php } else { ?>
+                                        <option value="1"><?php echo $text_registered_customer_yes; ?></option>
+                                        <option value="0" selected="selected"><?php echo $text_registered_customer_no; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-sm-2 control-label" for="input-receipt"><span data-toggle="tooltip" title="<?php echo $help_receipt; ?>"><?php echo $entry_show_receipt_page; ?></span></label>
                                 <div class="col-sm-10">
                                     <select name="paysonCheckout2_receipt" id="input-receipt" class="form-control">

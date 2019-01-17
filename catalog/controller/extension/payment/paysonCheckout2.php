@@ -4,7 +4,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     private $testMode;
     public $data = array();
 
-    const MODULE_VERSION = 'paysonEmbedded_1.0.2.1';
+    const MODULE_VERSION = 'paysonEmbedded_1.0.2.2';
 
     function __construct($registry) {
         parent::__construct($registry);
@@ -20,28 +20,33 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $this->data['info_checkout'] = $this->language->get('info_checkout');
         $this->data['country_code'] = isset($this->session->data['payment_address']['iso_code_2'])? $this->session->data['payment_address']['iso_code_2'] : NULL;
         $this->data['is_comments'] = $this->config->get('paysonCheckout2_comments') == 1?1:0;
-        $this->data['customerIsLogged'] = $this->customer->isLogged() == 1 ? true : false ;     
-        if (isset($this->request->get['snippet'])) {
-            $iframeSetup['snippet'] = $this->getSnippetUrl($this->request->get['snippet']);
-            $iframeSetup['width'] = (int) $this->config->get('paysonCheckout2_iframe_size_width');
-            $iframeSetup['width_type'] = $this->config->get('paysonCheckout2_iframe_size_width_type');
-            $iframeSetup['height'] = (int) $this->config->get('paysonCheckout2_iframe_size_height');
-            $iframeSetup['height_type'] = $this->config->get('paysonCheckout2_iframe_size_height_type');
-            $iframeSetup['status'] = 'readyToPay';
-            $iframeSetup['column_left'] = $this->load->controller('common/column_left');
-            $iframeSetup['column_right'] = $this->load->controller('common/column_right');
-            $iframeSetup['content_top'] = $this->load->controller('common/content_top');
-            $iframeSetup['content_bottom'] = $this->load->controller('common/content_bottom');
-            $iframeSetup['footer'] = $this->load->controller('common/footer');
-            $iframeSetup['header'] = $this->load->controller('common/header');
-        }
+        $this->data['customerIsLogged'] = !$this->customer->isLogged() ? 0 : 1 ;
 
-        if (count($iframeSetup) > 0) {
-            $this->load->model('checkout/order');                
-            $this->response->setOutput($this->load->view('extension/payment/paysonCheckout2', $iframeSetup));
-        } else {
-            $this->setupPurchaseData();
-            return $this->load->view('extension/payment/paysonCheckout2', $this->data);
+        if($this->config->get('paysonCheckout2_request_registered_customer') && !$this->customer->isLogged()){
+            return $this->load->view('extension/payment/paysonCheckout_registered_customer', $this->data);
+        }else{ 
+            if (isset($this->request->get['snippet'])) {
+                $iframeSetup['snippet'] = $this->getSnippetUrl($this->request->get['snippet']);
+                $iframeSetup['width'] = (int) $this->config->get('paysonCheckout2_iframe_size_width');
+                $iframeSetup['width_type'] = $this->config->get('paysonCheckout2_iframe_size_width_type');
+                $iframeSetup['height'] = (int) $this->config->get('paysonCheckout2_iframe_size_height');
+                $iframeSetup['height_type'] = $this->config->get('paysonCheckout2_iframe_size_height_type');
+                $iframeSetup['status'] = 'readyToPay';
+                $iframeSetup['column_left'] = $this->load->controller('common/column_left');
+                $iframeSetup['column_right'] = $this->load->controller('common/column_right');
+                $iframeSetup['content_top'] = $this->load->controller('common/content_top');
+                $iframeSetup['content_bottom'] = $this->load->controller('common/content_bottom');
+                $iframeSetup['footer'] = $this->load->controller('common/footer');
+                $iframeSetup['header'] = $this->load->controller('common/header');
+            }
+
+            if (count($iframeSetup) > 0) {
+                $this->load->model('checkout/order');                
+                $this->response->setOutput($this->load->view('extension/payment/paysonCheckout2', $iframeSetup));
+            } else {
+                $this->setupPurchaseData();
+                return $this->load->view('extension/payment/paysonCheckout2', $this->data);
+            }
         }
     }
 
