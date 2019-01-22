@@ -168,6 +168,24 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-logotype"><span data-toggle="tooltip" title="<?php echo $help_logotype; ?>"><?php echo $entry_logotype; ?></span></label>
+                                <div class="col-sm-10">
+                                    <select name="paysonCheckout2_logotype" id="input-logotype" class="form-control">
+                                        <?php if (!$paysonCheckout2_logotype) { ?>
+                                        <option value="3"><?php echo $text_logotype_yes_right; ?></option>
+                                        <option value="2"><?php echo $text_logotype_yes_left; ?></option>
+                                        <option value="1"><?php echo $text_logotype_no; ?></option>
+                                        <?php } else { ?>
+                                        <option><?php echo $paysonCheckout2_logotype; ?></option>
+                                        <option value="3"><?php echo $text_logotype_yes_right; ?></option>
+                                        <option value="2"><?php echo $text_logotype_yes_left; ?></option>
+                                        <option value="1"><?php echo $text_logotype_no; ?></option>
+                                        <?php } ?>   
+                                    </select> 
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="col-sm-2 control-label" for="input-registered-customer"><span data-toggle="tooltip" title="<?php echo $help_request_registered_customer; ?>"><?php echo $entry_registered_customer; ?></span></label>
                                 <div class="col-sm-10">
                                     <select name="paysonCheckout2_request_registered_customer" id="input-registered-customer" class="form-control">

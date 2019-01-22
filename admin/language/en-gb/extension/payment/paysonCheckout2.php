@@ -7,7 +7,7 @@ $_['heading_title'] = 'Payson Checkout 2.0';
 
 // Text
 $_['text_modul_name'] = 'Payson Checkout 2.0';
-$_['text_modul_version'] = '1.0.2.2';
+$_['text_modul_version'] = '1.0.2.3';
 
 $_['text_payment'] = 'Payment';
 $_['text_success'] = 'Success: You have modified Payson Checkout 2.0 module!';
@@ -36,6 +36,11 @@ $_['entry_sort_order'] = 'Sort Order';
 $_['entry_logg'] = 'Logs';
 $_['entry_totals_to_ignore'] = 'Order totals to ignore';
 
+$_['text_logotype'] = 'Enable logotype';
+$_['entry_logotype'] = 'Logotype';
+$_['text_logotype_yes_right'] = 'yes right';
+$_['text_logotype_yes_left'] = 'yes left';
+$_['text_logotype_no'] = 'no';
 $_['text_request_phone'] = 'Enable request phone';
 $_['entry_phone'] = 'Phone';
 $_['text_phone_yes'] = 'yes';
@@ -87,6 +92,7 @@ $_['help_merchant_id'] = 'Enter your merchant ID for Payson';
 $_['help_api_key'] = 'Enter your API-key for Payson';
 $_['help_secure_word'] = 'Enter a secure word';
 $_['help_logg'] = 'You can find your logs in Admin | System -> Error Log';
+$_['help_logotype'] = 'Enable logotype  1:no | 2:left | 3:right';
 $_['help_verification'] = 'Can be used to add extra customer verification';
 $_['help_request_phone'] = 'Select phone';
 $_['help_request_registered_customer'] = 'Can be used to activate only registered customers when using the module Ajax Quick Checkout';

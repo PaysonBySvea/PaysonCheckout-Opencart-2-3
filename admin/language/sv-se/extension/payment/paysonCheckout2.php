@@ -7,7 +7,7 @@ $_['paysonCheckout2_example'] = 'Example Extra Text';
 $_['heading_title'] = 'Payson Checkout 2.0';
 // Text
 $_['text_modul_name'] = 'Payson Checkout 2.0';
-$_['text_modul_version'] = '1.0.2.1';
+$_['text_modul_version'] = '1.0.2.3';
 $_['text_payment'] = 'Payment';
 $_['text_success'] = 'Success: Du har &auml;ndrat Payson Checkout 2.0 modulen!';
 $_['text_paysonCheckout2'] = '<a onclick="window.open(\'https://www.payson.se/tj%C3%A4nster/ta-betalt\');"><img src="view/image/payment/paysonCheckout2.png" alt="payson Checkout 2.0" title="payson Checkout 2.0" /></a>';
@@ -35,6 +35,11 @@ $_['entry_sort_order'] = 'Sorteringsordning';
 $_['entry_logg'] = 'Loggar';
 $_['entry_totals_to_ignore'] = 'Ignorerade ordertillägg';
 
+$_['text_logotype'] = 'Aktivera logotypen';
+$_['entry_logotype'] = 'Logotyp';
+$_['text_logotype_yes_right'] = 'ja höger';
+$_['text_logotype_yes_left'] = 'ja vänster';
+$_['text_logotype_no'] = 'nej';
 $_['text_request_phone'] = 'Aktivera telefonnummer';
 $_['entry_phone'] = 'Telefonnummer';
 $_['text_phone_yes'] = 'ja';
@@ -87,6 +92,7 @@ $_['help_merchant_id'] = 'Ange ditt merchantID f&ouml;r ditt Paysonkonto';
 $_['help_api_key'] = 'Ange din API-nyckel f&ouml;r ditt Paysonkonto';
 $_['help_secure_word'] = 'Ange ett hemligt ord';
 $_['help_logg'] = 'Du hittar dina loggar i Admin | System -> Error Log';
+$_['help_logotype'] = 'Aktivera logotype 1:nej | 2:vänster | 3:höger';
 $_['help_gui_verification'] = 'Kan användas som en extra verifikation';
 $_['help_request_phone'] = 'Enable telefonnummer';
 $_['help_request_registered_customer'] = 'Kan användas för att aktivera enbart registrerade kunder vid användning av modulen Ajax Quick Checkout';
