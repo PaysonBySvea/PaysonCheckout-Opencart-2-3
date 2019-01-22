@@ -174,7 +174,7 @@
                                         <?php if (!$paysonCheckout2_logotype) { ?>
                                         <option value="3"><?php echo $text_logotype_yes_right; ?></option>
                                         <option value="2"><?php echo $text_logotype_yes_left; ?></option>
-                                        <option value="1"><?php echo $text_logotype_no; ?></option>
+                                        <option value="1" selected="selected"><?php echo $text_logotype_no; ?></option>
                                         <?php } else { ?>
                                         <option><?php echo $paysonCheckout2_logotype; ?></option>
                                         <option value="3"><?php echo $text_logotype_yes_right; ?></option>
