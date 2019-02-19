@@ -26,6 +26,9 @@ $_['secure_word'] = 'Secure word';
 
 $_['tab_api']				         = 'API Details';
 $_['tab_order_status']				 = 'Order status';
+$_['entry_order_status_shipped'] = 'Order Status Shipped';
+$_['entry_order_status_canceled'] = 'Order Status Canceled';
+$_['entry_order_status_refunded'] = 'Order Status Refunded';
 $_['tab_checkout_scheme']			 = 'Checkout scheme';
 
 $_['entry_total'] = 'Total';
@@ -105,4 +108,8 @@ $_['help_total'] = 'The checkout total the order must reach before this payment 
 $_['help_receipt'] = 'Select yes for Payson receipt or no for Opencart receipt';
 $_['help_comments'] = 'Select yes or no to enable/disable comments about the order';
 $_['help_totals_to_ignore'] = 'Comma separated list with order totals not to send to payson';
+$_['help_order_status'] = 'Set by OpenCart after the customer has completed a payment or when an invoice can be sent.';
+$_['help_order_status_shipped'] = 'Notify Payson that the order has been shipped';
+$_['help_order_status_canceled'] = 'Notify Payson that the order has been canceled';
+$_['help_order_status_refunded'] = 'Notify Payson that the order has been refunded';
 ?>
