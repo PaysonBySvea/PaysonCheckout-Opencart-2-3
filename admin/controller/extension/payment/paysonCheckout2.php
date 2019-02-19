@@ -61,18 +61,8 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['entry_totals_to_ignore'] = $this->language->get('entry_totals_to_ignore');
         
         $data['entry_color_scheme'] = $this->language->get('entry_color_scheme');
-        $data['text_color_scheme_blue'] = $this->language->get('text_color_scheme_blue');
         $data['text_color_scheme_gray'] = $this->language->get('text_color_scheme_gray');
         $data['text_color_scheme_white'] = $this->language->get('text_color_scheme_white');
-        $data['text_color_scheme_grayTextLogos'] = $this->language->get('text_color_scheme_grayTextLogos');
-        $data['text_color_scheme_blueTextLogos'] = $this->language->get('text_color_scheme_blueTextLogos');
-        $data['text_color_scheme_whiteTextLogos'] = $this->language->get('text_color_scheme_whiteTextLogos');
-        $data['text_color_scheme_grayNoFooter'] = $this->language->get('text_color_scheme_grayNoFooter');
-        $data['text_color_scheme_blueNoFooter'] = $this->language->get('text_color_scheme_blueNoFooter');
-        $data['text_color_scheme_whiteNoFooter'] = $this->language->get('text_color_scheme_whiteNoFooter'); 
-        $data['text_color_scheme_graysemi'] = $this->language->get('text_color_scheme_graysemi');
-        $data['text_color_scheme_pitchblack'] = $this->language->get('text_color_scheme_pitchblack');
-        $data['text_color_scheme_bright'] = $this->language->get('text_color_scheme_bright');
   
         $data['entry_logotype'] = $this->language->get('entry_logotype');
         $data['text_logotype_yes_left'] = $this->language->get('text_logotype_yes_left');

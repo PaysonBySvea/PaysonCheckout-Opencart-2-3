@@ -252,25 +252,11 @@
                                     <select name="paysonCheckout2_color_scheme" id="input-color-scheme" class="form-control">   
                                         <?php if (!$paysonCheckout2_color_scheme) { ?>
                                         <option value="gray" selected="selected"><?php echo $text_color_scheme_gray; ?></option>
-                                        <option value="blue"> <?php echo $text_color_scheme_blue; ?></option>
                                         <option value="white"><?php echo $text_color_scheme_white; ?></option>
-                                        <option value="grayTextLogos"><?php echo $text_color_scheme_grayTextLogos; ?></option>
-                                        <option value="blueTextLogos"><?php echo $text_color_scheme_blueTextLogos; ?></option>
-                                        <option value="whiteTextLogos"><?php echo $text_color_scheme_whiteTextLogos; ?></option>
-                                        <option value="grayNoFooter"><?php echo $text_color_scheme_grayNoFooter; ?></option>
-                                        <option value="blueNoFooter"><?php echo $text_color_scheme_blueNoFooter; ?></option>
-                                        <option value="whiteNoFooter"><?php echo $text_color_scheme_whiteNoFooter; ?></option>
                                         <?php } else { ?>
                                         <option><?php echo $paysonCheckout2_color_scheme; ?></option>
                                         <option value="gray"> <?php echo $text_color_scheme_gray; ?></option>
-                                        <option value="blue"> <?php echo $text_color_scheme_blue; ?></option>
                                         <option value="white"><?php echo $text_color_scheme_white; ?></option>
-                                        <option value="blueTextLogos"><?php echo $text_color_scheme_grayTextLogos; ?></option>
-                                        <option value="blueTextLogos"><?php echo $text_color_scheme_blueTextLogos; ?></option>
-                                        <option value="whiteTextLogos"><?php echo $text_color_scheme_whiteTextLogos; ?></option>
-                                        <option value="grayNoFooter"><?php echo $text_color_scheme_grayNoFooter; ?></option>
-                                        <option value="blueNoFooter"><?php echo $text_color_scheme_blueNoFooter; ?></option>
-                                        <option value="whiteNoFooter"><?php echo $text_color_scheme_whiteNoFooter; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
