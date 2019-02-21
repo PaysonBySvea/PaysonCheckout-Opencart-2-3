@@ -50,6 +50,9 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['text_all_zones'] = $this->language->get('text_all_zones');
 
         $data['entry_order_status'] = $this->language->get('entry_order_status'); 
+        $data['entry_order_status_shipped'] = $this->language->get('entry_order_status_shipped'); 
+        $data['entry_order_status_canceled'] = $this->language->get('entry_order_status_canceled'); 
+        $data['entry_order_status_refunded'] = $this->language->get('entry_order_status_refunded'); 
         
         $data['entry_status'] = $this->language->get('entry_status');
         
@@ -120,6 +123,9 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['help_comments'] = $this->language->get('help_comments');	
         $data['help_totals_to_ignore'] = $this->language->get('help_totals_to_ignore');
         $data['help_method_mode'] = $this->language->get('help_method_mode');
+        $data['help_order_status_shipped'] = $this->language->get('help_order_status_shipped');
+        $data['help_order_status_canceled'] = $this->language->get('help_order_status_canceled');
+        $data['help_order_status_refunded'] = $this->language->get('help_order_status_refunded');
         $data['tab_api'] = $this->language->get('tab_api');
         $data['tab_general'] = $this->language->get('tab_general');
         $data['tab_order_status'] = $this->language->get('tab_order_status');
@@ -217,8 +223,34 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
 
         if (isset($this->request->post['paysonCheckout2_order_status_id'])) {
             $data['paysonCheckout2_order_status_id'] = $this->request->post['paysonCheckout2_order_status_id'];
-        } else {
+        } elseif ($this->config->get('paysonCheckout2_order_status_id') !== null) {
             $data['paysonCheckout2_order_status_id'] = $this->config->get('paysonCheckout2_order_status_id');
+        } else {
+            $data['paysonCheckout2_order_status_id'] = 5;
+        }
+        
+        if (isset($this->request->post['paysonCheckout2_order_status_shipped_id'])) {
+            $data['paysonCheckout2_order_status_shipped_id'] = $this->request->post['paysonCheckout2_order_status_shipped_id'];
+        } elseif ($this->config->get('paysonCheckout2_order_status_shipped_id') !== null) {
+            $data['paysonCheckout2_order_status_shipped_id'] = $this->config->get('paysonCheckout2_order_status_shipped_id');
+        } else {
+            $data['paysonCheckout2_order_status_shipped_id'] = 1; //Pending
+        }
+
+        if (isset($this->request->post['paysonCheckout2_order_status_canceled_id'])) {
+            $data['paysonCheckout2_order_status_canceled_id'] = $this->request->post['paysonCheckout2_order_status_canceled_id'];
+        } elseif ($this->config->get('paysonCheckout2_order_status_canceled_id') !== null) {
+            $data['paysonCheckout2_order_status_canceled_id'] = $this->config->get('paysonCheckout2_order_status_canceled_id');
+        }else {
+            $data['paysonCheckout2_order_status_canceled_id'] = 1; //Pending
+        }
+
+        if (isset($this->request->post['paysonCheckout2_order_status_refunded_id'])) {
+            $data['paysonCheckout2_order_status_refunded_id'] = $this->request->post['paysonCheckout2_order_status_refunded_id'];
+        } elseif($this->config->get('paysonCheckout2_order_status_refunded_id') !== null) {
+            $data['paysonCheckout2_order_status_refunded_id'] = $this->config->get('paysonCheckout2_order_status_refunded_id');
+        } else {
+            $data['paysonCheckout2_order_status_refunded_id'] = 1; ////Pending
         }
 
         $this->load->model('localisation/order_status');
@@ -362,10 +394,18 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         return !$this->error;
     }
     
-    	public function install() {
-		$this->load->model('extension/payment/paysonCheckout2');
+    public function install() {
+            $this->load->model('setting/event');
+            $this->load->model('extension/payment/paysonCheckout2');
 
-		$this->model_extension_payment_paysonCheckout2->install();
-	}
+            $this->model_extension_payment_paysonCheckout2->install();
+            $this->model_setting_event->addEvent('payson_status_shipped', 'catalog/model/checkout/order/addOrderHistory/after', 'extension/payment/paysonCheckout2/notifyStatusToPayson');
+    }
+        
+    public function uninstall() {
+            $this->load->model('setting/setting');  
+            $this->load->model('setting/event');
+            $this->model_setting_event->deleteEventByCode('payson_status_shipped');
+    }
 }
 ?>
