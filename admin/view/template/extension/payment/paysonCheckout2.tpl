@@ -243,6 +243,51 @@
                                     </select>
                                 </div>
                             </div>  
+                              
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-order-status-shipped"><span data-toggle="tooltip" title="<?php echo $help_order_status_shipped; ?>"><?php echo $entry_order_status_shipped; ?></span></label>
+                                <div class="col-sm-10">
+                                    <select name="paysonCheckout2_order_status_shipped_id" id="input-order-status-shipped" class="form-control">
+                                        <?php foreach ($order_statuses as $order_status) { ?>
+                                        <?php if ($order_status['order_status_id'] == $paysonCheckout2_order_status_shipped_id) { ?>
+                                        <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
+                                        <?php } else { ?>
+                                        <option value="<?php echo $order_status['order_status_id']; ?>"><?php echo $order_status['name']; ?></option>
+                                        <?php } ?>
+                                        <?php } ?>
+                                    </select>
+                        </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-order-status-canceled"><span data-toggle="tooltip" title="<?php echo $help_order_status_canceled; ?>"><?php echo $entry_order_status_canceled; ?></span></label>
+                                <div class="col-sm-10">
+                                    <select name="paysonCheckout2_order_status_canceled_id" id="input-order-status-canceled" class="form-control">
+                                        <?php foreach ($order_statuses as $order_status) { ?>
+                                        <?php if ($order_status['order_status_id'] == $paysonCheckout2_order_status_canceled_id) { ?>
+                                        <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
+                                        <?php } else { ?>
+                                        <option value="<?php echo $order_status['order_status_id']; ?>"><?php echo $order_status['name']; ?></option>
+                                        <?php } ?>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div> 
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-order-status-refunded"><span data-toggle="tooltip" title="<?php echo $help_order_status_refunded; ?>"><?php echo $entry_order_status_refunded; ?></span></label>
+                                <div class="col-sm-10">
+                                    <select name="paysonCheckout2_order_status_refunded_id" id="input-order-status-refunded" class="form-control">
+                                        <?php foreach ($order_statuses as $order_status) { ?>
+                                        <?php if ($order_status['order_status_id'] == $paysonCheckout2_order_status_refunded_id) { ?>
+                                        <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
+                                        <?php } else { ?>
+                                        <option value="<?php echo $order_status['order_status_id']; ?>"><?php echo $order_status['name']; ?></option>
+                                        <?php } ?>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div> 
                         </div>
                         
                         <div class="tab-pane" id="tab-checkout-scheme">
