@@ -395,17 +395,17 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     }
     
     public function install() {
-            $this->load->model('setting/event');
+            $this->load->model('extension/event');
             $this->load->model('extension/payment/paysonCheckout2');
 
             $this->model_extension_payment_paysonCheckout2->install();
-            $this->model_setting_event->addEvent('payson_status_shipped', 'catalog/model/checkout/order/addOrderHistory/after', 'extension/payment/paysonCheckout2/notifyStatusToPayson');
+            $this->model_extension_event->addEvent('payson_status_shipped', 'catalog/model/checkout/order/addOrderHistory/after', 'extension/payment/paysonCheckout2/notifyStatusToPayson');
     }
         
     public function uninstall() {
             $this->load->model('setting/setting');  
-            $this->load->model('setting/event');
-            $this->model_setting_event->deleteEventByCode('payson_status_shipped');
+            $this->load->model('extension/event');
+            $this->model_extension_event->deleteEventByCode('payson_status_shipped');
     }
 }
 ?>
