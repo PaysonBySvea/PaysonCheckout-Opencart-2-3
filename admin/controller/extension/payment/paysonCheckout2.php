@@ -405,7 +405,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     public function uninstall() {
             $this->load->model('setting/setting');  
             $this->load->model('extension/event');
-            $this->model_extension_event->deleteEventByCode('payson_status_shipped');
+            $this->model_extension_event->deleteEvent('payson_status_shipped');
     }
 }
 ?>
