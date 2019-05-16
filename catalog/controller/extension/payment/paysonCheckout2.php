@@ -4,7 +4,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     private $testMode;
     public $data = array();
 
-    const MODULE_VERSION = 'paysonEmbedded_1.0.2.5';
+    const MODULE_VERSION = 'paysonEmbedded_1.0.2.7';
 
     function __construct($registry) {
         parent::__construct($registry);
@@ -231,6 +231,8 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     }
 
     function paysonIpn() {
+        // Give time to return-url
+        sleep(2);
         require_once 'paysonEmbedded/paysonapi.php';
         $this->load->model('checkout/order');
         $this->load->language('extension/payment/paysonCheckout2');
