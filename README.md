@@ -1,19 +1,31 @@
-Payson-Checkout2-Opencart-2-3
-========================
+Payson Checkout 2.0 for OpenCart 2.3
 
-Module for OpenCart 2.3.0.2 implementing Payson Checkout 2.0
-
-# Payson OpenCart Module
-
-## Description
-
-Module for OpenCart 2.3.0.2 implementing Payson Checkout 2.0
 
 ## Installation
 
-* Make a BACKUP of your web store and database. 
+* Make a backup of your files and database
 
-* Copy all files from this repository into yor OpenCart root. 
+* Download the extension [PaysonCheckout2.ocmod.zip](https://github.com/PaysonAB/PaysonCheckout2-Opencart-2-3)
+
+* Upload the extension via _Extensions_ -> _Installer_
+
+* Install the extension via _Extensions_ -> _Extensions_ -> _Payments_
+
+* Enable and configure the extension
+
+
+## Manual installation
+
+* Make a backup of your files and database
+
+* Download and unzip this repository
+
+* Upload all files and folders from "upload" to your OpenCart root
+
+* Install the extension via _Extensions_ -> _Extensions_ -> _Payments_
+
+* Enable and configure the extension
+
 
 ### Configuration
 
@@ -31,17 +43,16 @@ Delete the cache of your browser when switching between your test and production
 
 ## Upgrade
 
-* You should have a BACKUP of your web store and database.
+* Make a backup of your files and database.
 
-* Login into your web shop Administration Panel.
+* Login into your web shop Administration Panel
 
-* Go to Extensions->Payments. Uninstall Payson Checkout 2.0. 
+* Go to _Extensions_ -> _Extensions_ -> _Payments_
 
-* Go to INSTALLATION in this document. 
+* Uninstall Payson Checkout 2.0
 
-## Usage
+* Go to INSTALLATION in this document
 
-If you only are interested to use this module in your store, please download it from [here](https://github.com/PaysonAB/Payson-Checkout2-Opencart)
 
 ## Contributing
 
