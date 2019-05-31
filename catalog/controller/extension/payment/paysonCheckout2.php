@@ -661,7 +661,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
                 return "SV";
             case "FI":
                 return "FI";
-            case "DA"
+            case "DA":
             case "DK":
                 return "DA";
             case "NB":
