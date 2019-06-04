@@ -46,6 +46,17 @@
                                     <input type="text" name="paysonCheckout2_modul_version" hidden value="<?php echo $text_modul_version; ?>" placeholder="<?php echo $text_modul_version; ?>" id="input-modul-version" class="form-control" />
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-method-mode"><span data-toggle="tooltip" title="<?php echo $help_method_mode; ?>"><?php echo $entry_method_mode; ?></span></label>
+                                <div class="col-sm-10">
+                                    <select name="paysonCheckout2_mode" id="input-method-mode" class="form-control">
+                                        <option value="1" <?php echo ($paysonCheckout2_mode?'selected':''); ?> ><?php echo $text_method_mode_live; ?></option>
+                                        <option value="0" <?php echo ($paysonCheckout2_mode?'':'selected'); ?> ><?php echo $text_method_mode_sandbox; ?></option>
+                                    </select>
+
+                                </div>
+                            </div>
                             
                             <div class="form-group required">
                                 <label class="col-sm-2 control-label" for="input-merchant-id"><span data-toggle="tooltip" title="<?php echo $help_merchant_id; ?>"><?php echo $merchant_id; ?></span></label>
@@ -66,27 +77,6 @@
                                     <?php } ?>
                                 </div>
                             </div>
-                            
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="input-method-mode"><span data-toggle="tooltip" title="<?php echo $help_method_mode; ?>"><?php echo $entry_method_mode; ?></span></label>
-                                <div class="col-sm-10">
-                                    <select name="paysonCheckout2_mode" id="input-method-mode" class="form-control">
-                                        <option value="1" <?php echo ($paysonCheckout2_mode?'selected':''); ?> ><?php echo $text_method_mode_live; ?></option>
-                                        <option value="0" <?php echo ($paysonCheckout2_mode?'':'selected'); ?> ><?php echo $text_method_mode_sandbox; ?></option>
-                                    </select>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane" id="tab-general">
-                            
-                            <div class="form-group">
-                                <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="paysonCheckout2_sort_order" value="<?php echo $paysonCheckout2_sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_status; ?></label>
@@ -100,6 +90,16 @@
                                         <option value="0" selected="selected"><?php echo $text_disabled; ?></option>
                                         <?php } ?>
                                     </select>
+                                </div>
+                            </div> 
+                        </div>
+
+                        <div class="tab-pane" id="tab-general">
+                            
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="paysonCheckout2_sort_order" value="<?php echo $paysonCheckout2_sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control" />
                                 </div>
                             </div>
 
