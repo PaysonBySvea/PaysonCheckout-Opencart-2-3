@@ -40,6 +40,9 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['secure_word'] = $this->language->get('secure_word');
         $data['entry_logg'] = $this->language->get('entry_logg');
 
+        $data['entry_button_create_a_test_paysonaccount'] = $this->language->get('entry_button_create_a_test_paysonaccount');
+        $data['entry_button_create_a_paysonaccount'] = $this->language->get('entry_button_create_a_paysonaccount');
+
         $data['entry_method_mode'] = $this->language->get('entry_method_mode');
         $data['paysonCheckout2_mode'] = $this->language->get('payment_mode');
         $data['text_method_mode_live'] = $this->language->get('text_method_mode_live');
@@ -123,6 +126,8 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['help_comments'] = $this->language->get('help_comments');	
         $data['help_totals_to_ignore'] = $this->language->get('help_totals_to_ignore');
         $data['help_method_mode'] = $this->language->get('help_method_mode');
+        $data['help_button_create_a_paysonaccount'] = $this->language->get('help_button_create_a_paysonaccount');
+        $data['help_button_create_a_test_paysonaccount'] = $this->language->get('help_button_create_a_test_paysonaccount');
         $data['help_order_status_shipped'] = $this->language->get('help_order_status_shipped');
         $data['help_order_status_canceled'] = $this->language->get('help_order_status_canceled');
         $data['help_order_status_refunded'] = $this->language->get('help_order_status_refunded');

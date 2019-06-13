@@ -37,6 +37,11 @@
                     <!--disabled-->                  
                     <!--disabled-->   
                     <div class="tab-content">
+
+                        <p>
+                            <a href="https://test-www.payson.se/TestAccount/Create/" data-toggle="tooltip" title="<?php echo $help_button_create_a_test_paysonaccount; ?>" class="btn btn-primary pull-right" target="_blank" data-original-title="<?php echo $help_button_create_a_test_paysonaccount; ?>"><?php echo $entry_button_create_a_test_paysonaccount; ?></a>
+                            <a href="https://account.payson.se/account/create/"  data-toggle="tooltip" title="<?php echo $help_button_create_a_paysonaccount; ?>" class="btn btn-primary pull-right" target="_blank" data-original-title="<?php echo $help_button_create_a_paysonaccount; ?>"><?php echo $entry_button_create_a_paysonaccount; ?></a>                 
+                        </p><br /><br /><hr />
   
                         <div class="tab-pane active" id="tab-api">
                        
