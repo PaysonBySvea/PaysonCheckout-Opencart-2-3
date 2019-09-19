@@ -4,7 +4,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     private $testMode;
     public $data = array();
 
-    const MODULE_VERSION = 'paysonEmbedded_1.0.2.8';
+    const MODULE_VERSION = 'paysonEmbedded_1.0.2.9';
 
     function __construct($registry) {
         parent::__construct($registry);
@@ -412,7 +412,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
             if (!empty($optionsArray))
                 $productTitle .= ' | ' . join('; ', $optionsArray);
 
-            $productTitle = (strlen($productTitle) > 80 ? substr($productTitle, 0, strpos($productTitle, ' ', 80)) : $productTitle);
+            $productTitle = (strlen($productTitle) > 180 ? substr($productTitle, 0, strpos($productTitle, ' ', 180)) : $productTitle);
             $product_price = $this->currency->format(($product['price'] + ($product['price'] * $product['tax_rate'])), $order_data['currency_code'], $order_data['currency_value'], false);
 
             $payData->AddOrderItem(new PaysonEmbedded\OrderItem(html_entity_decode($productTitle, ENT_QUOTES, 'UTF-8'), $product_price, $product['quantity'], $product['tax_rate'], $product['model']));

@@ -7,7 +7,7 @@ $_['paysonCheckout2_example'] = 'Example Extra Text';
 $_['heading_title'] = 'Payson Checkout 2.0';
 // Text
 $_['text_modul_name'] = 'Payson Checkout 2.0';
-$_['text_modul_version'] = '1.0.2.8';
+$_['text_modul_version'] = '1.0.2.9';
 $_['text_payment'] = 'Payment';
 $_['text_success'] = 'Success: Du har &auml;ndrat Payson Checkout 2.0 modulen!';
 $_['text_paysonCheckout2'] = '<a onclick="window.open(\'https://www.payson.se/tj%C3%A4nster/ta-betalt\');"><img src="view/image/payment/paysonCheckout2.png" alt="payson Checkout 2.0" title="payson Checkout 2.0" /></a>';
