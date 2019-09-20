@@ -104,4 +104,6 @@ $_['help_comments'] = 'Select yes or no to enable/disable comments about the ord
 $_['help_totals_to_ignore'] = 'Comma separated list with order totals not to send to payson';
 $_['help_order_status'] = 'Set by OpenCart after the customer has completed a payment or when an invoice can be sent.';
 $_['help_order_status_shipped'] = 'Notify Payson that the order has been shipped. <br />Please check under Admin | System -> Tools -> Error Logs that the order has been shipped before sending the products to the customer.';
+$_['help_order_status_canceled'] = 'Notify Payson that the order has been canceled.<br />Please check under Admin | System -> Tools -> Error Logs that the order has been ’cancelled’ for this order';
+$_['help_order_status_refunded'] = 'Notify Payson that the order has been refunded.<br />Please check under Admin | System -> Tools -> Error Logs that the order has been  ’paidToAccoun/refunded’ for this order.';
 ?>
