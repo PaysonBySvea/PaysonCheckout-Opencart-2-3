@@ -18,17 +18,18 @@ namespace PaysonEmbedded {
         /** @var string $integrationInfo Information about the integration. */
         public $integrationInfo = NULL;
 
-        public function __construct($checkoutUri, $confirmationUri, $notificationUri, $termsUri, $partnerId = NULL, $integrationInfo = ' PaysonEmbedded|1.0|NONE') {
+        public function __construct($checkoutUri, $confirmationUri, $notificationUri, $termsUri, $partnerId = NULL, $integrationInfo = ' PaysonEmbedded|1.0|NONE', $reference = NULL) {
             $this->checkoutUri = $checkoutUri;
             $this->confirmationUri = $confirmationUri;
             $this->notificationUri = $notificationUri;
             $this->termsUri = $termsUri;
             $this->partnerId = $partnerId;
             $this->integrationInfo = $integrationInfo;
+            $this->reference = $reference;
         }
         
         public static function create($data) {
-            $merchant =  new Merchant($data->checkoutUri,$data->confirmationUri,$data->notificationUri,$data->termsUri, $data->partnerId, $data->integrationInfo);
+            $merchant =  new Merchant($data->checkoutUri,$data->confirmationUri,$data->notificationUri,$data->termsUri, $data->partnerId, $data->integrationInfo, $data->reference);
             return $merchant;
         }
      
