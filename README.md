@@ -1,6 +1,5 @@
 Payson Checkout 2.0 for OpenCart 2.3
 
-
 ## Installation
 
 * Make a backup of your files and database
