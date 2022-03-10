@@ -4,7 +4,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     private $testMode;
     public $data = array();
 
-    const MODULE_VERSION = 'paysonEmbedded_1.0.3.3';
+    const MODULE_VERSION = 'paysonEmbedded_1.0.3.4';
 
     function __construct($registry) {
         parent::__construct($registry);
@@ -279,6 +279,24 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
 
         switch ($paymentStatus) {
             case "readyToShip":
+
+                //Products are not available in the desired quantity or not in stock.               
+                $products = $this->cart->getProducts();
+                if($this->config->get('paysonCheckout2_out_of_stock') AND !$products[0]['stock'])
+                {
+                    $callPaysonApi_a = $this->getAPIInstanceMultiShop();
+                    $checkout_a = $callPaysonApi_a->ShipCheckout($paymentResponsObject);
+                        
+                    foreach ($checkout_a->payData->items as $item) 
+                    {
+                        $item->creditedAmount = ($item->totalPriceIncludingTax);
+                    }
+                    unset($item);
+                    $checkout2_a = $callPaysonApi_a->UpdateCheckout($checkout_a);
+
+                    $this->response->redirect($this->url->link('checkout/cart'));
+                }
+
                 $succesfullStatus = $this->config->get('paysonCheckout2_order_status_id');
                 $comment = "";
                 if($this->testMode){

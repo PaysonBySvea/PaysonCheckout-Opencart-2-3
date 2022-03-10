@@ -101,6 +101,10 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['entry_show_receipt_page_yes'] = $this->language->get('entry_show_receipt_page_yes');
         $data['entry_show_receipt_page_no'] = $this->language->get('entry_show_receipt_page_no');
 
+        $data['entry_product_out_of_stock'] = $this->language->get('entry_product_out_of_stock');
+        $data['entry_product_out_of_stock_yes'] = $this->language->get('entry_product_out_of_stock_yes');
+        $data['entry_product_out_of_stock_no'] = $this->language->get('entry_product_out_of_stock_no');
+
         $data['entry_show_comments'] = $this->language->get('entry_show_comments');
         $data['entry_show_comments_yes'] = $this->language->get('entry_show_comments_yes');
         $data['entry_show_comments_no'] = $this->language->get('entry_show_comments_no');
@@ -123,6 +127,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['help_iframe_size_height_type'] = $this->language->get('help_iframe_size_height_type');
         $data['help_iframe_size_width_type'] = $this->language->get('help_iframe_size_width_type'); 
 	    $data['help_receipt'] = $this->language->get('help_receipt');	
+        $data['help_product_out_of_stock'] = $this->language->get('help_product_out_of_stock');
         $data['help_comments'] = $this->language->get('help_comments');	
         $data['help_totals_to_ignore'] = $this->language->get('help_totals_to_ignore');
         $data['help_method_mode'] = $this->language->get('help_method_mode');
@@ -352,6 +357,12 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
             $data['paysonCheckout2_receipt'] = $this->request->post['paysonCheckout2_receipt'];
         } else {
             $data['paysonCheckout2_receipt'] = $this->config->get('paysonCheckout2_receipt');
+        }
+
+        if (isset($this->request->post['paysonCheckout2_out_of_stock'])) {
+            $data['paysonCheckout2_out_of_stock'] = $this->request->post['paysonCheckout2_out_of_stock'];
+        } else {
+            $data['paysonCheckout2_out_of_stock'] = $this->config->get('paysonCheckout2_out_of_stock');
         }
         
         if (isset($this->request->post['paysonCheckout2_comments'])) {

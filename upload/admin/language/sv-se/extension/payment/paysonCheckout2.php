@@ -7,7 +7,7 @@ $_['paysonCheckout2_example'] = 'Example Extra Text';
 $_['heading_title'] = 'Payson Checkout 2.0';
 // Text
 $_['text_modul_name'] = 'Payson Checkout 2.0';
-$_['text_modul_version'] = '1.0.3.3';
+$_['text_modul_version'] = '1.0.3.4';
 $_['text_payment'] = 'Payment';
 $_['text_success'] = 'Success: Du har &auml;ndrat Payson Checkout 2.0 modulen!';
 $_['text_paysonCheckout2'] = '<a onclick="window.open(\'https://www.payson.se/tj%C3%A4nster/ta-betalt\');"><img src="view/image/payment/paysonCheckout2.png" alt="payson Checkout 2.0" title="payson Checkout 2.0" /></a>';
@@ -71,6 +71,9 @@ $_['entry_order_item_details_to_ignore'] = 'Ignorerade ordertillägg vid Payson'
 $_['entry_show_receipt_page']           = 'Visa Kvittosidan';
 $_['entry_show_receipt_page_yes']           = 'ja';
 $_['entry_show_receipt_page_no']           = 'nej';
+$_['entry_product_out_of_stock'] = 'Produkt slut i lager';
+$_['entry_product_out_of_stock_yes'] = 'ja';
+$_['entry_product_out_of_stock_no'] = 'nej';
 $_['entry_show_comments'] = 'Aktivera meddelande';
 $_['entry_show_comments_yes'] = 'ja';
 $_['entry_show_comments_no'] = 'nej';
@@ -100,6 +103,7 @@ $_['help_iframe_size_height_type'] = 'Ange höjden av iframe';
 $_['help_iframe_size_width_type'] = 'Ange bredden av iframe';
 $_['help_total'] = 'Kassan totala ordern m&aring;ste uppn&aring; innan betalningsmetod blir aktiv';
 $_['help_receipt'] = 'Välj Ja för Paysons kvittosidan eller Nej for Opencarts kvittosidan';
+$_['help_product_out_of_stock'] = 'Avvisa betalning när en produkt är slut i lager';
 $_['help_comments'] = 'Aktivera meddelande för beställningen';
 $_['help_totals_to_ignore'] = 'Kommaseparerad lista med ordertillägg som ej skall skickas till Payson';
 $_['help_order_status'] = 'Ange efter OpenCart efter att kunden har slutfört en betalning eller när en faktura kan skickas';

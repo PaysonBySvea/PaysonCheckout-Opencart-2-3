@@ -7,7 +7,7 @@ $_['heading_title'] = 'Payson Checkout 2.0';
 
 // Text
 $_['text_modul_name'] = 'Payson Checkout 2.0';
-$_['text_modul_version'] = '1.0.3.3';
+$_['text_modul_version'] = '1.0.3.4';
 
 $_['text_payment'] = 'Payment';
 $_['text_success'] = 'Success: You have modified Payson Checkout 2.0 module!';
@@ -72,6 +72,9 @@ $_['entry_order_item_details_to_ignore'] = 'Order Item Details to ignore by Pays
 $_['entry_show_receipt_page'] = 'Show Receipt Page';
 $_['entry_show_receipt_page_yes'] = 'yes';
 $_['entry_show_receipt_page_no'] = 'no';
+$_['entry_product_out_of_stock'] = 'Product out of stock';
+$_['entry_product_out_of_stock_yes'] = 'yes';
+$_['entry_product_out_of_stock_no'] = 'no';
 $_['entry_show_comments'] = 'Enable comments about the order';
 $_['entry_show_comments_yes'] = 'yes';
 $_['entry_show_comments_no'] = 'no';
@@ -100,6 +103,7 @@ $_['help_iframe_size_height_type'] = 'Select the height of iframe';
 $_['help_iframe_size_width_type'] = 'Select the width of iframe';
 $_['help_total'] = 'The checkout total the order must reach before this payment method becomes active';
 $_['help_receipt'] = 'Select yes for Payson receipt or no for Opencart receipt';
+$_['help_product_out_of_stock'] = 'Decline payment when a product is out of stock';
 $_['help_comments'] = 'Select yes or no to enable/disable comments about the order';
 $_['help_totals_to_ignore'] = 'Comma separated list with order totals not to send to payson';
 $_['help_order_status'] = 'Set by OpenCart after the customer has completed a payment or when an invoice can be sent.';

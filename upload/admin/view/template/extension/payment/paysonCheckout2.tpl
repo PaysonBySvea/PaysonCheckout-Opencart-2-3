@@ -214,6 +214,16 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-out-of-stock"><span data-toggle="tooltip" title="<?php echo $help_product_out_of_stock; ?>"><?php echo $entry_product_out_of_stock; ?></span></label>
+                                <div class="col-sm-10">
+                                    <select name="paysonCheckout2_out_of_stock" id="input-out-of-stock" class="form-control">
+                                        <option value="1" <?php echo ($paysonCheckout2_out_of_stock == 1 ? 'selected="selected"' : '""') . '>'  . $entry_product_out_of_stock_yes?></option>
+                                        <option value="0" <?php echo ($paysonCheckout2_out_of_stock == 0 ? 'selected="selected"' : '""') . '>' . $entry_product_out_of_stock_no?></option>
+                                    </select>
+                                </div>
+                            </div>
                             
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="input-secure-word"><span data-toggle="tooltip" title="<?php echo $help_secure_word; ?>"><?php echo $secure_word; ?></span></label>
