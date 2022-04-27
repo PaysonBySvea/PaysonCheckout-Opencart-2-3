@@ -4,7 +4,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     private $testMode;
     public $data = array();
 
-    const MODULE_VERSION = 'paysonEmbedded_1.0.3.5';
+    const MODULE_VERSION = 'paysonEmbedded_1.0.3.6';
 
     function __construct($registry) {
         parent::__construct($registry);
@@ -308,9 +308,9 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
                 
                 $this->db->query("UPDATE `" . DB_PREFIX . "order` SET
                                 firstname  = '" . $paymentResponsObject->customer->firstName . "',
-                                lastname  = '" . $paymentResponsObject->customer->lastName . "',
-                                telephone  = '" . ($paymentResponsObject->customer->phone?$paymentResponsObject->customer->phone:'')."',
-                                email               = '" . $paymentResponsObject->customer->email . "',
+                                lastname   = '" . $paymentResponsObject->customer->lastName . "',
+                                telephone  = '" . (isset($paymentResponsObject->customer->phone) AND $paymentResponsObject->customer->phone ? $paymentResponsObject->customer->phone:'')."',
+                                email      = '" . $paymentResponsObject->customer->email . "',
 								
 								payment_firstname  = '" . $paymentResponsObject->customer->firstName . "',
                                 payment_lastname   = '" . $paymentResponsObject->customer->lastName . "',
