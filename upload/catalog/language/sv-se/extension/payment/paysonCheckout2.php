@@ -7,6 +7,7 @@ $_['text_payson_payment_error'] = 'Ett fel har uppstått. Vänligen försök ige
 $_['error_checkout_id'] = 'Checkout-ID kunde inte hämtas för denna transaktion';
 $_['info_checkout'] = 'Momsen kommer att uppdateras efter landskod.';
 $_['text_payson_comments'] = 'Ange kommentaren angående din beställning';
+$_['text_out_of_stock'] = 'Dessvärre gick ditt köp inte igenom då en eller flera av varorna har sålt slut. Vänligen se över din varukorg och försök igen.';
 
 $_['text_gift_card'] = 'Presentkort';
 

@@ -4,7 +4,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     private $testMode;
     public $data = array();
 
-    const MODULE_VERSION = 'paysonEmbedded_1.0.3.6';
+    const MODULE_VERSION = 'paysonEmbedded_1.0.3.8';
 
     function __construct($registry) {
         parent::__construct($registry);
@@ -233,7 +233,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
 
     function paysonIpn() {
         // Give time to return-url
-        sleep(2);
+        sleep(10);
         require_once 'paysonEmbedded/paysonapi.php';
         $this->load->model('checkout/order');
         $this->load->language('extension/payment/paysonCheckout2');
@@ -282,19 +282,14 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
 
                 //Products are not available in the desired quantity or not in stock.               
                 $products = $this->cart->getProducts();
-                if($this->config->get('paysonCheckout2_out_of_stock') AND isset($products[0]['stock']) AND !$products[0]['stock'] AND $ReturnCallUrl != 'ipnCall')
+                if($this->config->get('paysonCheckout2_out_of_stock') AND !$this->cart->hasStock())
                 {
                     $callPaysonApi_a = $this->getAPIInstanceMultiShop();
-                    $checkout_a = $callPaysonApi_a->ShipCheckout($paymentResponsObject);
-                        
-                    foreach ($checkout_a->payData->items as $item) 
-                    {
-                        $item->creditedAmount = ($item->totalPriceIncludingTax);
-                    }
-                    unset($item);
-                    $checkout2_a = $callPaysonApi_a->UpdateCheckout($checkout_a);
+                    $checkout_a = $callPaysonApi_a->CancelCheckout($paymentResponsObject);
 
-                    $this->response->redirect($this->url->link('checkout/cart'));
+                    $this->session->data['error'] = $this->language->get('text_out_of_stock');
+                    //$this->response->redirect($this->url->link('checkout/cart'));
+                    $this->response->redirect($this->url->link('checkout/checkout', '', true));
                 }
 
                 $succesfullStatus = $this->config->get('paysonCheckout2_order_status_id');
