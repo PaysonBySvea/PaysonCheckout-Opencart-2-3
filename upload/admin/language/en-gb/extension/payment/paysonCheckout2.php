@@ -7,7 +7,7 @@ $_['heading_title'] = 'Payson Checkout 2.0';
 
 // Text
 $_['text_modul_name'] = 'Payson Checkout 2.0';
-$_['text_modul_version'] = '1.0.3.8';
+$_['text_modul_version'] = '1.0.3.9';
 
 $_['text_payment'] = 'Payment';
 $_['text_success'] = 'Success: You have modified Payson Checkout 2.0 module!';
@@ -56,7 +56,7 @@ $_['text_registered_customer_yes'] = 'yes';
 $_['text_registered_customer_no'] = 'no';
 $_['entry_verification'] = 'Verification';
 $_['text_verification_none'] = 'None';
-$_['text_verification_bankid'] = 'BankId';
+$_['text_verification_bankid'] = 'Bankid';
 $_['entry_color_scheme'] = 'Color scheme';
 $_['text_color_scheme_gray'] = 'gray';
 $_['text_color_scheme_white'] = 'white';
@@ -93,7 +93,7 @@ $_['help_api_key'] = 'Enter your API-key for Payson';
 $_['help_secure_word'] = 'Enter a secure word';
 $_['help_logg'] = 'You can find your logs in Admin | System -> Error Log';
 $_['help_logotype'] = 'Enable logotype  1:no | 2:left | 3:right';
-$_['help_verification'] = 'Can be used to add extra customer verification';
+$_['help_verification'] = 'Select verification to add extra customer verfication. Can be none or bankid';
 $_['help_request_phone'] = 'Select phone';
 $_['help_request_registered_customer'] = 'Can be used to activate only registered customers when using the module Ajax Quick Checkout';
 $_['help_color_scheme'] = 'Select color scheme';

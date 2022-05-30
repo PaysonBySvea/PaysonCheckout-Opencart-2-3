@@ -76,8 +76,8 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['text_logotype_no'] = $this->language->get('text_logotype_no');
 
         $data['entry_verification'] = $this->language->get('entry_verification');
-        $data['text_verification_bankid'] = $this->language->get('text_verification_bankid');
         $data['text_verification_none'] = $this->language->get('text_verification_none');
+        $data['text_verification_bankid'] = $this->language->get('text_verification_bankid');
           
         $data['entry_phone'] = $this->language->get('entry_phone');
         $data['text_phone_yes'] = $this->language->get('text_phone_yes');
@@ -297,10 +297,10 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
             $data['paysonCheckout2_logotype'] = $this->config->get('paysonCheckout2_logotype');
         }
                 
-        if (isset($this->request->post['paysonCheckout2_gui_verification'])) {
-            $data['paysonCheckout2_gui_verification'] = $this->request->post['paysonCheckout2_gui_verification'];
+        if (isset($this->request->post['paysonCheckout2_verification'])) {
+            $data['paysonCheckout2_verification'] = $this->request->post['paysonCheckout2_verification'];
         } else {
-            $data['paysonCheckout2_gui_verification'] = $this->config->get('PaysonCheckout2_gui_verification');
+            $data['paysonCheckout2_verification'] = $this->config->get('paysonCheckout2_verification');
         }
 
         if (isset($this->request->post['paysonCheckout2_request_phone'])) {

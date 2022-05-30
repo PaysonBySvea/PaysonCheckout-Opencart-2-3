@@ -12,10 +12,10 @@ namespace PaysonEmbedded{
         /** @var list $countries  List of countries shown in the checkout snippet. */
         public $countries = array();
         
-        public function __construct($locale = "sv", $colorScheme = "gray", $verfication = "none", $requestPhone = NULL, $countries = NULL){
+        public function __construct($locale = "sv", $colorScheme = "gray", $verification = "none", $requestPhone = NULL, $countries = NULL){
             $this->colorScheme = $colorScheme;
             $this->locale = $locale; 
-            $this->verfication = $verfication;
+            $this->verification = $verification;
             $this->requestPhone = $requestPhone;
             $this->countries = $countries;
         }

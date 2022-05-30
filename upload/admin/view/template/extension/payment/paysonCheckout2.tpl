@@ -144,18 +144,18 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="input-verification"><span data-toggle="tooltip" title="<?php echo $help_verification; ?>"><?php echo $entry_verification; ?></span></label>
                                 <div class="col-sm-10">
-                                    <select name="paysonCheckout2_gui_verification" id="input-verification" class="form-control">
-                                        <?php if (!$paysonCheckout2_gui_verification) { ?>
+                                    <select name="paysonCheckout2_verification" id="input-color-scheme" class="form-control">   
+                                        <?php if (!$paysonCheckout2_verification) { ?>
                                         <option value="none" selected="selected"><?php echo $text_verification_none; ?></option>
-                                        <option><?php echo $text_verification_bankid ?></option> 
+                                        <option value="bankid"><?php echo $text_verification_bankid; ?></option>
                                         <?php } else { ?>
-                                        <option><?php echo $paysonCheckout2_gui_verification; ?></option>
-                                        <option> <?php echo $text_verification_none; ?></option>
-                                        <option><?php echo $text_verification_bankid ?></option>    
+                                        <option><?php echo $paysonCheckout2_verification; ?></option>
+                                        <option value="none"> <?php echo $text_verification_none; ?></option>
+                                        <option value="bankid"><?php echo $text_verification_bankid; ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
-                            </div>
+                            </div> 
 
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" for="input-phone"><span data-toggle="tooltip" title="<?php echo $help_request_phone; ?>"><?php echo $entry_phone; ?></span></label>
