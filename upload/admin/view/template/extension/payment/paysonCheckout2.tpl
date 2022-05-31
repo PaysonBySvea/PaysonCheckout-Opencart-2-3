@@ -173,6 +173,21 @@
                             </div>
 
                             <div class="form-group">
+                                <label class="col-sm-2 control-label" for="input-phone-optional"><span data-toggle="tooltip" title="<?php echo $help_request_phone_optional; ?>"><?php echo $entry_phone_optional; ?></span></label>
+                                <div class="col-sm-10">
+                                    <select name="paysonCheckout2_request_phone_optional" id="input-phone-optional" class="form-control">
+                                        <?php if ($paysonCheckout2_request_phone_optional) { ?>
+                                        <option value="1" selected="selected"><?php echo $text_phone_optional_yes; ?></option>
+                                        <option value="0"><?php echo $text_phone_optional_no; ?></option>
+                                        <?php } else { ?>
+                                        <option value="1"><?php echo $text_phone_optional_yes; ?></option>
+                                        <option value="0" selected="selected"><?php echo $text_phone_optional_no; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
                                 <label class="col-sm-2 control-label" for="input-logotype"><span data-toggle="tooltip" title="<?php echo $help_logotype; ?>"><?php echo $entry_logotype; ?></span></label>
                                 <div class="col-sm-10">
                                     <select name="paysonCheckout2_logotype" id="input-logotype" class="form-control">

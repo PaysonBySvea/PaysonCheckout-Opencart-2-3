@@ -4,7 +4,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     private $testMode;
     public $data = array();
 
-    const MODULE_VERSION = 'paysonEmbedded_1.0.3.9';
+    const MODULE_VERSION = 'paysonEmbedded_1.0.4.0';
 
     function __construct($registry) {
         parent::__construct($registry);
@@ -124,7 +124,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
 
         $this->getOrderItems($payData);
 
-        $gui = new PaysonEmbedded\Gui($this->languagepaysonCheckout2(), $this->config->get('paysonCheckout2_color_scheme'), $this->config->get('paysonCheckout2_verification'), (int) $this->config->get('paysonCheckout2_request_phone'));
+        $gui = new PaysonEmbedded\Gui($this->languagepaysonCheckout2(), $this->config->get('paysonCheckout2_color_scheme'), $this->config->get('paysonCheckout2_verification'), (int) $this->config->get('paysonCheckout2_request_phone'),  (int) $this->config->get('paysonCheckout2_request_phone_optional'));
         $customer = new PaysonEmbedded\Customer(
                 $this->data['sender_first_name'], $this->data['sender_last_name'], $this->data['sender_email'], $this->data['sender_telephone'], '', $this->data['sender_city'], $this->data['sender_countrycode'], $this->data['sender_postcode'], $this->data['sender_address']);
         
@@ -304,7 +304,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
                 $this->db->query("UPDATE `" . DB_PREFIX . "order` SET
                                 firstname  = '" . $paymentResponsObject->customer->firstName . "',
                                 lastname   = '" . $paymentResponsObject->customer->lastName . "',
-                                telephone  = '" . (isset($paymentResponsObject->customer->phone) AND $paymentResponsObject->customer->phone ? $paymentResponsObject->customer->phone:'')."',
+                                telephone  = '" . (isset($paymentResponsObject->customer->phone) ? $paymentResponsObject->customer->phone:'')."',
                                 email      = '" . $paymentResponsObject->customer->email . "',
 								
 								payment_firstname  = '" . $paymentResponsObject->customer->firstName . "',

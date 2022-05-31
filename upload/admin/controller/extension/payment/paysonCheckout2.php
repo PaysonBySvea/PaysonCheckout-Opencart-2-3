@@ -83,6 +83,10 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['text_phone_yes'] = $this->language->get('text_phone_yes');
         $data['text_phone_no'] = $this->language->get('text_phone_no');
 
+        $data['entry_phone_optional'] = $this->language->get('entry_phone_optional');
+        $data['text_phone_optional_yes'] = $this->language->get('text_phone_optional_yes');
+        $data['text_phone_optional_no'] = $this->language->get('text_phone_optional_no');
+
         $data['entry_registered_customer'] = $this->language->get('entry_registered_customer');
         $data['text_registered_customer_yes'] = $this->language->get('text_registered_customer_yes');
         $data['text_registered_customer_no'] = $this->language->get('text_registered_customer_no');
@@ -120,6 +124,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $data['help_logotype'] = $this->language->get('help_logotype');
         $data['help_verification'] = $this->language->get('help_verification');
         $data['help_request_phone'] = $this->language->get('help_request_phone');
+        $data['help_request_phone_optional'] = $this->language->get('help_request_phone_optional');
         $data['help_request_registered_customer'] = $this->language->get('help_request_registered_customer');
         $data['help_color_scheme'] = $this->language->get('help_color_scheme');
         $data['help_iframe_size_height'] = $this->language->get('help_iframe_size_height');
@@ -307,6 +312,12 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
             $data['paysonCheckout2_request_phone'] = $this->request->post['paysonCheckout2_request_phone'];
         } else {
             $data['paysonCheckout2_request_phone'] = $this->config->get('paysonCheckout2_request_phone');
+        }
+        
+        if (isset($this->request->post['paysonCheckout2_request_phone_optional'])) {
+            $data['paysonCheckout2_request_phone_optional'] = $this->request->post['paysonCheckout2_request_phone_optional'];
+        } else {
+            $data['paysonCheckout2_request_phone_optional'] = $this->config->get('paysonCheckout2_request_phone_optional');
         }
 
         if (isset($this->request->post['paysonCheckout2_request_registered_customer'])) {

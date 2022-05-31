@@ -7,7 +7,7 @@ $_['heading_title'] = 'Payson Checkout 2.0';
 
 // Text
 $_['text_modul_name'] = 'Payson Checkout 2.0';
-$_['text_modul_version'] = '1.0.3.9';
+$_['text_modul_version'] = '1.0.4.0';
 
 $_['text_payment'] = 'Payment';
 $_['text_success'] = 'Success: You have modified Payson Checkout 2.0 module!';
@@ -50,6 +50,10 @@ $_['text_request_phone'] = 'Enable request phone';
 $_['entry_phone'] = 'Phone';
 $_['text_phone_yes'] = 'yes';
 $_['text_phone_no'] = 'no';
+$_['text_request_phone_optional'] = 'Enable request phone';
+$_['entry_phone_optional'] = 'Phone Optional';
+$_['text_phone_optional_yes'] = 'yes';
+$_['text_phone_optional_no'] = 'no';
 $_['text_request_registered_customer'] = 'Can be used to activate only registered customers when using the module Ajax Quick Checkout';
 $_['entry_registered_customer'] = 'Registered customers';
 $_['text_registered_customer_yes'] = 'yes';
@@ -94,7 +98,8 @@ $_['help_secure_word'] = 'Enter a secure word';
 $_['help_logg'] = 'You can find your logs in Admin | System -> Error Log';
 $_['help_logotype'] = 'Enable logotype  1:no | 2:left | 3:right';
 $_['help_verification'] = 'Select verification to add extra customer verfication. Can be none or bankid';
-$_['help_request_phone'] = 'Select phone';
+$_['help_request_phone'] = 'Used to require the user to fill in his phone number';
+$_['help_request_phone_optional'] = 'Select phone optional to ask the user to fill in his phone number, but not strict required';
 $_['help_request_registered_customer'] = 'Can be used to activate only registered customers when using the module Ajax Quick Checkout';
 $_['help_color_scheme'] = 'Select color scheme';
 $_['help_iframe_size_height'] = 'Select the height of iframe';
