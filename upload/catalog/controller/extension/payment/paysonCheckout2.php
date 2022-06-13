@@ -4,7 +4,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     private $testMode;
     public $data = array();
 
-    const MODULE_VERSION = 'paysonEmbedded_1.0.4.0';
+    const MODULE_VERSION = 'paysonEmbedded_1.0.4.1';
 
     function __construct($registry) {
         parent::__construct($registry);
@@ -302,27 +302,27 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
                 }
                 
                 $this->db->query("UPDATE `" . DB_PREFIX . "order` SET
-                                firstname  = '" . $paymentResponsObject->customer->firstName . "',
-                                lastname   = '" . $paymentResponsObject->customer->lastName . "',
-                                telephone  = '" . (isset($paymentResponsObject->customer->phone) ? $paymentResponsObject->customer->phone:'')."',
-                                email      = '" . $paymentResponsObject->customer->email . "',
-								
-								payment_firstname  = '" . $paymentResponsObject->customer->firstName . "',
-                                payment_lastname   = '" . $paymentResponsObject->customer->lastName . "',
-                                payment_address_1  = '" . $paymentResponsObject->customer->street . "',
-                                payment_city       = '" . $paymentResponsObject->customer->city . "', 
-                                payment_country    = '" . $paymentResponsObject->customer->countryCode . "', 
-                                payment_postcode   = '" . $paymentResponsObject->customer->postalCode . "',
-								
-								shipping_firstname  = '" . $paymentResponsObject->customer->firstName . "',
-                                shipping_lastname   = '" . $paymentResponsObject->customer->lastName . "',
-                                shipping_address_1  = '" . $paymentResponsObject->customer->street . "',
-                                shipping_city       = '" . $paymentResponsObject->customer->city . "', 
-                                shipping_country    = '" . $paymentResponsObject->customer->countryCode . "', 
-                                shipping_postcode   = '" . $paymentResponsObject->customer->postalCode . "',
-								
+                                firstname  = '" . $this->db->escape($paymentResponsObject->customer->firstName) . "',
+                                lastname   = '" . $this->db->escape($paymentResponsObject->customer->lastName) . "',
+                                telephone  = '" . (isset($paymentResponsObject->customer->phone) ? $this->db->escape($paymentResponsObject->customer->phone) :'')."',
+                                email      = '" . $this->db->escape($paymentResponsObject->customer->email) . "',
+                                
+                                payment_firstname  = '" . $this->db->escape($paymentResponsObject->customer->firstName) . "',
+                                payment_lastname   = '" . $this->db->escape($paymentResponsObject->customer->lastName) . "',
+                                payment_address_1  = '" . $this->db->escape($paymentResponsObject->customer->street) . "',
+                                payment_city       = '" . $this->db->escape($paymentResponsObject->customer->city) . "', 
+                                payment_country    = '" . $this->db->escape($paymentResponsObject->customer->countryCode) . "', 
+                                payment_postcode   = '" . $this->db->escape($paymentResponsObject->customer->postalCode) . "',
+                                
+                                shipping_firstname  = '" . $this->db->escape($paymentResponsObject->customer->firstName) . "',
+                                shipping_lastname   = '" . $this->db->escape($paymentResponsObject->customer->lastName) . "',
+                                shipping_address_1  = '" . $this->db->escape($paymentResponsObject->customer->street) . "',
+                                shipping_city       = '" . $this->db->escape($paymentResponsObject->customer->city) . "', 
+                                shipping_country    = '" . $this->db->escape($paymentResponsObject->customer->countryCode) . "', 
+                                shipping_postcode   = '" . $this->db->escape($paymentResponsObject->customer->postalCode) . "',
+                                
                                 payment_code        = 'paysonCheckout2'
-                                WHERE order_id      = '" . $orderIdTemp . "'");
+                                WHERE order_id      = '" . (int) $orderIdTemp . "'");
                 
                 if ($this->config->get('paysonCheckout2_logg') == 1) {
                     $this->writeArrayToLog($comment);
@@ -408,7 +408,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
 
         $order_data = $this->model_checkout_order->getOrder($this->session->data['order_id']);
 
-        $query = "SELECT `order_product_id`, `name`, `model`, `price`, `quantity`, `tax` / `price` as 'tax_rate' FROM `" . DB_PREFIX . "order_product` WHERE `order_id` = " . (int) $orderId . " UNION ALL SELECT 0, '" . $this->language->get('text_gift_card') . "', `code`, `amount`, '1', 0.00 FROM `" . DB_PREFIX . "order_voucher` WHERE `order_id` = " . (int) $orderId;
+        $query = "SELECT `order_product_id`, `name`, `model`, `price`, `quantity`, `tax` / `price` as 'tax_rate' FROM `" . DB_PREFIX . "order_product` WHERE `order_id` = " . (int) $orderId . " UNION ALL SELECT 0, '" . $this->db->escape($this->language->get('text_gift_card')) . "', `code`, `amount`, '1', 0.00 FROM `" . DB_PREFIX . "order_voucher` WHERE `order_id` = " . (int) $orderId;
         $product_query = $this->db->query($query)->rows;
 
         foreach ($product_query as $product) {
@@ -579,28 +579,28 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
      */
     private function updatePaymentResponseDatabase($paymentDetails, $id, $call = 'returnCall') {
         $this->db->query("UPDATE `" . DB_PREFIX . "payson_embedded_order` SET 
-                        payment_status  = '" . $paymentDetails->status . "',
+                        payment_status  = '" . $this->db->escape($paymentDetails->status) . "',
                         updated                       = NOW(), 
                         sender_email                  = 'sender_email', 
                         currency_code                 = 'currency_code',
                         tracking_id                   = 'tracking_id',
                         type                          = 'type',
-                        shippingAddress_name          = '" .  str_replace( array( '\'', '"', ',' , ';', '<', '>', '&' ), ' ', $paymentDetails->customer->firstName)  . "',
-                        shippingAddress_lastname      = '" . $paymentDetails->customer->lastName . "', 
-                        shippingAddress_street_ddress = '" . str_replace( array( '\'', '"', ',' , ';', '<', '>', '&' ), ' ', $paymentDetails->customer->street) . "',
-                        shippingAddress_postal_code   = '" . $paymentDetails->customer->postalCode . "',
-                        shippingAddress_city          = '" . $paymentDetails->customer->city . "', 
-                        shippingAddress_country       = '" . $paymentDetails->customer->countryCode . "'
-			WHERE  checkout_id            = '" . $id . "'"
+                        shippingAddress_name          = '" . $this->db->escape(str_replace( array( '\'', '"', ',' , ';', '<', '>', '&' ), ' ', $paymentDetails->customer->firstName))  . "',
+                        shippingAddress_lastname      = '" . $this->db->escape($paymentDetails->customer->lastName) . "', 
+                        shippingAddress_street_ddress = '" . $this->db->escape(str_replace( array( '\'', '"', ',' , ';', '<', '>', '&' ), ' ', $paymentDetails->customer->street)) . "',
+                        shippingAddress_postal_code   = '" . $this->db->escape($paymentDetails->customer->postalCode) . "',
+                        shippingAddress_city          = '" . $this->db->escape($paymentDetails->customer->city) . "', 
+                        shippingAddress_country       = '" . $this->db->escape($paymentDetails->customer->countryCode) . "'
+			            WHERE  checkout_id            = '" . $this->db->escape($id) . "'"
         );
     }
 
     private function storePaymentResponseDatabase($checkoutId, $orderId) {
         $this->db->query("INSERT INTO " . DB_PREFIX . "payson_embedded_order SET 
                             payson_embedded_id  = '',
-                            order_id            = '" . $orderId . "', 
-                            checkout_id         = '" . $checkoutId . "', 
-                            purchase_id         = '" . $checkoutId . "',
+                            order_id            = '" . (int) $orderId . "', 
+                            checkout_id         = '" . $this->db->escape($checkoutId) . "', 
+                            purchase_id         = '" . $this->db->escape($checkoutId) . "',
                             payment_status      = 'created', 
                             added               = NOW(), 
                             updated             = NOW()"
@@ -736,8 +736,8 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
             if(is_string($p_comments)){
                 $this->session->data['comment'] = $p_comments;
                 $this->db->query("UPDATE `" . DB_PREFIX . "order` SET 
-                comment  = '" . nl2br($p_comments) . "'
-                WHERE order_id      = '" . $this->session->data['order_id'] . "'");  
+                comment  = '" . $this->db->escape(nl2br($p_comments)) . "'
+                WHERE order_id      = '" . (int) $this->session->data['order_id'] . "'");  
             }
         }
     }
