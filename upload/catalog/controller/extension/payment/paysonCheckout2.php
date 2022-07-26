@@ -4,7 +4,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
     private $testMode;
     public $data = array();
 
-    const MODULE_VERSION = 'paysonEmbedded_1.0.4.1';
+    const MODULE_VERSION = 'paysonEmbedded_1.0.4.2';
 
     function __construct($registry) {
         parent::__construct($registry);
@@ -75,6 +75,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $this->data['ipn_url'] = $this->url->link('extension/payment/paysonCheckout2/paysonIpn&order_id=' . $this->session->data['order_id']);
         $this->data['checkout_url'] = $this->url->link('extension/payment/paysonCheckout2/returnFromPayson&order_id=' . $this->session->data['order_id']);
         $this->data['terms_url'] = $this->url->link('information/information/agree', 'information_id=5');
+        $this->data['validation_url'] = $this->url->link('extension/payment/paysonCheckout2/validation&order_id=' . $this->session->data['order_id']);
 
         $this->data['order_id'] = $order_data['order_id'];
         $this->data['amount'] = $this->currency->format($order_data['total'] * 100, $order_data['currency_code'], $order_data['currency_value'], false) / 100;
@@ -117,7 +118,7 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         $this->load->language('extension/payment/paysonCheckout2');
 
         $callPaysonApi = $this->getAPIInstanceMultiShop();
-        $paysonMerchant = new PaysonEmbedded\Merchant($this->data['checkout_url'], $this->data['ok_url'], $this->data['ipn_url'], $this->data['terms_url'], null, ('PaysonCheckout2.0_Opencart2.3|' . $this->config->get('paysonCheckout2_modul_version') . '|' . VERSION));
+        $paysonMerchant = new PaysonEmbedded\Merchant($this->data['checkout_url'], $this->data['ok_url'], $this->data['ipn_url'], $this->data['terms_url'], $this->data['validation_url'], null, ('PaysonCheckout2.0_Opencart2.3|' . $this->config->get('paysonCheckout2_modul_version') . '|' . VERSION));
         
         $paysonMerchant->reference = $this->session->data['order_id'];
         $payData = new PaysonEmbedded\PayData($this->currencypaysonCheckout2());
@@ -231,6 +232,40 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
         }
     }
 
+    function validation(){
+        if(!$this->config->get('paysonCheckout2_out_of_stock'))
+        {
+            http_response_code(200);
+            exit;
+        }else{
+
+            if (isset($this->request->get['order_id'])) 
+            {
+                $order_id_temp = $this->request->get['order_id'];
+            } else 
+            {
+                http_response_code(303);exit;
+            }
+
+            $compare_product_quantity = $this->db->query("SELECT " . DB_PREFIX . "order_product.product_id as id, " . DB_PREFIX . "order_product.quantity as o_quantity, " . DB_PREFIX . "product.quantity as p_quantity FROM "
+           . "" . DB_PREFIX . "order_product INNER JOIN " . DB_PREFIX . "product ON " . DB_PREFIX . "order_product.product_id = " . DB_PREFIX . "product.product_id WHERE " . DB_PREFIX . "order_product.order_id = '" . (int) $order_id_temp . "'");
+            
+            foreach ($compare_product_quantity->rows as $product_quantity) 
+            {
+                if ($product_quantity['p_quantity'] >= $product_quantity['o_quantity'])
+                {
+                    http_response_code(200);
+                }else 
+                {
+                    $this->writeToLog("One or more products are not in stock before payment is made. ProductId: ". $product_quantity['id']);
+                    http_response_code(303);exit;
+                }
+            }
+
+        }
+
+    }
+
     function paysonIpn() {
         // Give time to return-url
         sleep(10);
@@ -279,21 +314,15 @@ class ControllerExtensionPaymentPaysonCheckout2 extends Controller {
 
         switch ($paymentStatus) {
             case "readyToShip":
-
-                //Products are not available in the desired quantity or not in stock.               
-                $products = $this->cart->getProducts();
-                if($this->config->get('paysonCheckout2_out_of_stock') AND !$this->cart->hasStock())
-                {
-                    $callPaysonApi_a = $this->getAPIInstanceMultiShop();
-                    $checkout_a = $callPaysonApi_a->CancelCheckout($paymentResponsObject);
-
-                    $this->session->data['error'] = $this->language->get('text_out_of_stock');
-                    //$this->response->redirect($this->url->link('checkout/cart'));
-                    $this->response->redirect($this->url->link('checkout/checkout', '', true));
-                }
+                $totals_payson = round($paymentResponsObject->payData->totalPriceIncludingTax);
+                $totals_opencart = round($this->currency->format($order_info['total'] * 100, $order_info['currency_code'], $order_info['currency_value'], false) / 100);
 
                 $succesfullStatus = $this->config->get('paysonCheckout2_order_status_id');
                 $comment = "";
+                if(($totals_opencart + 1 < $totals_payson) || ($totals_opencart - 1 > $totals_payson)){
+                    $comment .= "OBS! The price does not match, please check the value of the order. Checkout ID: " . $paymentCheckoutId . "\n\n";
+                }
+                
                 if($this->testMode){
                     $comment .= "Checkout ID: " . $paymentCheckoutId . "\n\n";
                     $comment .= "Payson status: " . $paymentStatus . "\n\n";
